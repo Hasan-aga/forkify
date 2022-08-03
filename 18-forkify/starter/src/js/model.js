@@ -40,6 +40,7 @@ export const loadRecipe = async function (id) {
 
 export const loadSearchResults = async function (query) {
   try {
+    console.log(ApiTools);
     const data = await ApiTools.getJson(`${SEARCH_URL}${query}&key=${API_KEY}`);
     state.search.currentPage = 1;
     state.search.query = query;
