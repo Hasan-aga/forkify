@@ -41,13 +41,13 @@ export const loadRecipe = async function (id) {
 export const loadSearchResults = async function (query) {
   try {
     const data = await ApiTools.getJson(`${SEARCH_URL}${query}&key=${API_KEY}`);
-    console.log('loaded data', data);
     state.search.currentPage = 1;
     state.search.query = query;
     state.search.count = data.results;
     if (Array.isArray(data.data.recipes) && data.data.recipes.length === 0)
       throw new Error(`No results for ${query}`);
     state.search.results = data.data.recipes;
+    console.log('state', state);
   } catch (error) {
     console.error(`search failed: ${error}`);
     throw error;
