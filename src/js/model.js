@@ -1,11 +1,11 @@
-import { API_URL, SEARCH_URL, API_KEY, RESULTS_PER_PAGE } from './config';
-import { ApiTools } from './helper';
+import { API_URL, SEARCH_URL, API_KEY, RESULTS_PER_PAGE } from "./config";
+import { ApiTools } from "./helper";
 
 export const state = {
   recipe: {},
   bookmarks: [],
   search: {
-    query: '',
+    query: "",
     count: undefined,
     results: [],
     resultsPerPage: RESULTS_PER_PAGE,
@@ -20,16 +20,16 @@ export const loadRecipe = async function (id) {
   try {
     let recipe;
     //if recipe to be loaded exists in bookmarks -> load it from bookmarks instead of api call
-    if (state.bookmarks.some(bookmark => bookmark.id === id)) {
+    if (state.bookmarks.some((bookmark) => bookmark.id === id)) {
       recipe = state.bookmarks.find(
-        bookmarkedRecipe => bookmarkedRecipe.id === id
+        (bookmarkedRecipe) => bookmarkedRecipe.id === id
       );
     } else {
       const data = await ApiTools.getJson(`${API_URL}${id}?key=${API_KEY}`);
       recipe = data.data.recipe;
     }
     const alreadyBookmarked = this.state.bookmarks.find(
-      bookmark => bookmark.id === recipe.id
+      (bookmark) => bookmark.id === recipe.id
     );
     state.recipe = alreadyBookmarked ? alreadyBookmarked : recipe;
   } catch (error) {
@@ -59,6 +59,10 @@ export const getResultsOfPage = function (
   this.state.search.currentPage = page;
   const startIndex = (page - 1) * this.state.search.resultsPerPage;
   const endIndex = page * this.state.search.resultsPerPage;
+  console.log(
+    "result per page",
+    this.state.search.results.slice(startIndex, endIndex)
+  );
   return this.state.search.results.slice(startIndex, endIndex);
 };
 
@@ -68,7 +72,7 @@ export const updateServings = function (changeAmount) {
       ? 1
       : state.recipe.servings + changeAmount;
   state.recipe.ingredients.forEach(
-    ingredient => (ingredient.quantity *= newServing / state.recipe.servings)
+    (ingredient) => (ingredient.quantity *= newServing / state.recipe.servings)
   );
   state.recipe.servings = newServing;
 };
@@ -80,34 +84,34 @@ export const switchBookmark = function () {
     ? this.state.bookmarks.push(this.state.recipe)
     : this.state.bookmarks.splice(indexOfBookmark, 1);
   saveBookmarksToLocal();
-  this.state.search.results.forEach(storedRecipe => {
+  this.state.search.results.forEach((storedRecipe) => {
     if (storedRecipe.id === this.state.recipe.id)
       storedRecipe.bookmark = storedRecipe.bookmark ? false : true;
   });
 };
 
 const saveBookmarksToLocal = function () {
-  localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
+  localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
 };
 
 export const getBookmarksFromLocal = function () {
   state.bookmarks =
-    localStorage.getItem('bookmarks') === null
+    localStorage.getItem("bookmarks") === null
       ? []
-      : [...JSON.parse(localStorage.getItem('bookmarks'))];
+      : [...JSON.parse(localStorage.getItem("bookmarks"))];
 };
 
 export const uploadRecipe = async function (newRecipe) {
   try {
     const ingredients = Object.entries(newRecipe)
       .filter(
-        ingPair => ingPair[0].startsWith('ingredient') && ingPair[1] !== ''
+        (ingPair) => ingPair[0].startsWith("ingredient") && ingPair[1] !== ""
       )
-      .map(ing => {
-        const ingredients = ing[1].replaceAll(' ', '').split(',');
+      .map((ing) => {
+        const ingredients = ing[1].replaceAll(" ", "").split(",");
         if (ingredients.length < 3)
           throw new Error(
-            'Wrong ingriedients format, please use correct format: &ltquantity, unit, description&gt'
+            "Wrong ingriedients format, please use correct format: &ltquantity, unit, description&gt"
           );
         const [quantity, unit, description] = ingredients;
         return {
