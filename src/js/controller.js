@@ -45,7 +45,7 @@ const controlSearchResults = async function () {
     resultsView.render(paginatedResults);
     paginationView.render(model.state.search);
   } catch (error) {
-    console.error(`could not get results. ${error.message}`);
+    console.error(`could not get results. ${error.message}, ${error.stack}`);
     console.log(error);
     resultsView.renderError(error.message);
   }
