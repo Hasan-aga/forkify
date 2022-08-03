@@ -11,7 +11,7 @@ class RecipeView extends View {
   _successMessage = "";
 
   addHandlerRender(handler) {
-    console.log("icons", icons);
+    console.log("icons:", icons);
     ["hashchange", "load"].forEach((ev) =>
       window.addEventListener(ev, handler)
     );
