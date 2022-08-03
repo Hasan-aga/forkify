@@ -18,6 +18,7 @@ if (module.hot) {
 
 const controlRecipes = async function () {
   try {
+    console.log(recipeView);
     const id = window.location.hash.slice(1);
     if (!id) return;
 
