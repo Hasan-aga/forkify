@@ -57,6 +57,7 @@ export const getResultsOfPage = function (
   page = this.state.search.currentPage
 ) {
   try {
+    console.log("getting paginated results...");
     this.state.search.currentPage = page;
     const startIndex = (page - 1) * this.state.search.resultsPerPage;
     const endIndex = page * this.state.search.resultsPerPage;
