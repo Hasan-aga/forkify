@@ -59,6 +59,7 @@ export const getResultsOfPage = function (
   this.state.search.currentPage = page;
   const startIndex = (page - 1) * this.state.search.resultsPerPage;
   const endIndex = page * this.state.search.resultsPerPage;
+  console.log("index", startIndex, endIndex);
   console.log(
     "result per page",
     this.state.search.results.slice(startIndex, endIndex)
