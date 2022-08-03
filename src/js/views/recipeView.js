@@ -1,22 +1,25 @@
-'use strict';
-import icons from 'url:../../img/icons.svg';
-import View from './view';
-import fracty from 'fracty';
+"use strict";
+import icons from "url:../../img/icons.svg";
+import View from "./view";
+import fracty from "fracty";
 
 class RecipeView extends View {
-  _parentElement = document.querySelector('.recipe');
+  _parentElement = document.querySelector(".recipe");
   _data;
   b;
   _errorMessage = `¯\\_(ツ)_/ <br>Oh oh! something went wrong, try again!`;
-  _successMessage = '';
+  _successMessage = "";
 
   addHandlerRender(handler) {
-    ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
+    console.log("icons", icons);
+    ["hashchange", "load"].forEach((ev) =>
+      window.addEventListener(ev, handler)
+    );
   }
 
   addHandlerServings(handler) {
-    this._parentElement.addEventListener('click', function (e) {
-      const clickedButton = e.target.closest('.btn--tiny');
+    this._parentElement.addEventListener("click", function (e) {
+      const clickedButton = e.target.closest(".btn--tiny");
       if (!clickedButton) return;
       const changeAmount = +clickedButton.dataset.changeby;
       handler(changeAmount);
@@ -24,8 +27,8 @@ class RecipeView extends View {
   }
 
   addHandlerBookmark(handler) {
-    this._parentElement.addEventListener('click', function (e) {
-      const clickedButton = e.target.closest('.btn--bookmark');
+    this._parentElement.addEventListener("click", function (e) {
+      const clickedButton = e.target.closest(".btn--bookmark");
       if (!clickedButton) return;
       handler();
     });
@@ -75,7 +78,7 @@ class RecipeView extends View {
         </div>
         
       </div>
-      <div class="recipe__user-generated ${this._data.key ? '' : 'hidden'}">
+      <div class="recipe__user-generated ${this._data.key ? "" : "hidden"}">
       <svg>
         <use href="${icons}.svg#icon-user"></use>
       </svg>
@@ -84,7 +87,7 @@ class RecipeView extends View {
       <button class="btn--round btn--bookmark">
         <svg class="">
           <use href="${icons}.svg#icon-bookmark${
-      this._data.bookmark ? '-fill' : ''
+      this._data.bookmark ? "-fill" : ""
     }"></use>
         </svg>
       </button>
@@ -93,7 +96,7 @@ class RecipeView extends View {
     <div class="recipe__ingredients">
         <h2 class="heading--2">Recipe ingredients</h2>
         <ul class="recipe__ingredient-list">
-          ${this._data.ingredients.map(this._generateMarkupIngredient).join('')}
+          ${this._data.ingredients.map(this._generateMarkupIngredient).join("")}
       </div>
 
        
@@ -130,7 +133,7 @@ class RecipeView extends View {
         <use href="${icons}#icon-check"></use>
       </svg>
       <div class="recipe__quantity">${
-        ing.quantity ? fracty(ing.quantity).toString() : ''
+        ing.quantity ? fracty(ing.quantity).toString() : ""
       }</div>
       <div class="recipe__description">
         <span class="recipe__unit">${ing.unit}</span>
