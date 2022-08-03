@@ -40,8 +40,10 @@ const controlSearchResults = async function () {
     if (!query) return;
     resultsView.renderSpinner();
     await model.loadSearchResults(query);
+    console.log('model.getResultsOfPage()', model.getResultsOfPage());
     resultsView.render(model.getResultsOfPage());
     paginationView.render(model.state.search);
+    console.log('model.state.search', model.state.search);
   } catch (error) {
     console.error(`could not get results. ${error}`);
     resultsView.renderError(error.message);

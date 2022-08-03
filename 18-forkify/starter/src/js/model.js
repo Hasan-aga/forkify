@@ -47,7 +47,6 @@ export const loadSearchResults = async function (query) {
     if (Array.isArray(data.data.recipes) && data.data.recipes.length === 0)
       throw new Error(`No results for ${query}`);
     state.search.results = data.data.recipes;
-    console.log('state', state);
   } catch (error) {
     console.error(`search failed: ${error}`);
     throw error;
