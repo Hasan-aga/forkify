@@ -36,7 +36,6 @@ const controlRecipes = async function () {
 const controlSearchResults = async function () {
   try {
     const query = searchValue.query;
-    console.log('query:', query);
     if (!query) return;
     resultsView.renderSpinner();
     await model.loadSearchResults(query);
