@@ -20,7 +20,7 @@ export class ApiTools {
         throw new Error(`failed to get data: ${data.error}, ${res.status}`);
       return data;
     } catch (error) {
-      throw `fetch error. ${error}`;
+      throw new Error(`fetch error. ${error}`);
     }
   };
 
