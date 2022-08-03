@@ -1,22 +1,22 @@
-'use strict';
-import View from './view';
+"use strict";
+import View from "./view";
 
 class BookmarksView extends View {
-  _parentElement = document.querySelector('.bookmarks__list');
+  _parentElement = document.querySelector(".bookmarks__list");
   _data;
   _errorMessage = `¯\\_(ツ)_/ <br>can't find any bookmarks!`;
-  _successMessage = '';
+  _successMessage = "";
 
   _generateMarkup() {
     const id = window.location.hash.slice(1);
     return this._data.length > 0
       ? this._data
           .map(
-            bookmark =>
+            (bookmark) =>
               `
     <li class="preview">
         <a class="preview__link ${
-          bookmark.id === id ? 'preview__link--active' : ''
+          bookmark.id === id ? "preview__link--active" : ""
         }" href="#${bookmark.id}">
             <figure class="preview__fig">
             <img src="${bookmark.image_url}" alt="${bookmark.tite}" />
@@ -31,7 +31,7 @@ class BookmarksView extends View {
     </li> 
 `
           )
-          .join('')
+          .join("")
       : `<div class="message">
             <div>
                 <svg>
