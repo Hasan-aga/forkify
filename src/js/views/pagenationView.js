@@ -1,9 +1,9 @@
-'use strict';
-import View from './view';
-import icons from 'url:../../img/icons.svg';
+"use strict";
+import View from "./view";
+import icons from "../../img/icons.svg";
 
 class PaginationView extends View {
-  _parentElement = document.querySelector('.pagination');
+  _parentElement = document.querySelector(".pagination");
   _data;
 
   _generateMarkup() {
@@ -23,7 +23,7 @@ class PaginationView extends View {
       this._data.currentPage === 1 &&
       this._data.getTotalNumberOfPages() === 1
     )
-      return '';
+      return "";
     // at last page
     if (this._data.currentPage === this._data.getTotalNumberOfPages())
       return `
@@ -56,8 +56,8 @@ class PaginationView extends View {
   }
 
   addHandlerPagination(handler) {
-    this._parentElement.addEventListener('click', function (e) {
-      const button = e.target.closest('button');
+    this._parentElement.addEventListener("click", function (e) {
+      const button = e.target.closest("button");
       if (!button) return;
       const destinationPage = Number(button.dataset.goto);
       handler(destinationPage);

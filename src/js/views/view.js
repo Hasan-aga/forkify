@@ -1,5 +1,5 @@
-'use strict';
-import icons from 'url:../../img/icons.svg';
+"use strict";
+import icons from "../../img/icons.svg";
 
 export default class View {
   _parentElement;
@@ -15,7 +15,7 @@ export default class View {
               </div>
         `;
     this._clearView();
-    this._parentElement.insertAdjacentHTML('afterBegin', htmlMarkup);
+    this._parentElement.insertAdjacentHTML("afterBegin", htmlMarkup);
   }
 
   renderError(message = this._errorMessage) {
@@ -31,7 +31,7 @@ export default class View {
     `;
 
     this._clearView();
-    this._parentElement.insertAdjacentHTML('afterbegin', htmlMarkup);
+    this._parentElement.insertAdjacentHTML("afterbegin", htmlMarkup);
   }
 
   renderMessage(message = this._successMessage) {
@@ -47,11 +47,11 @@ export default class View {
     `;
 
     this._clearView();
-    this._parentElement.insertAdjacentHTML('afterbegin', htmlMarkup);
+    this._parentElement.insertAdjacentHTML("afterbegin", htmlMarkup);
   }
 
   _clearView() {
-    this._parentElement.innerHTML = '';
+    this._parentElement.innerHTML = "";
   }
 
   /**
@@ -63,7 +63,7 @@ export default class View {
     this._data = state;
     const recipeHtml = this._generateMarkup();
     this._clearView();
-    this._parentElement.insertAdjacentHTML('afterbegin', recipeHtml);
+    this._parentElement.insertAdjacentHTML("afterbegin", recipeHtml);
   }
 
   update(state) {
@@ -75,11 +75,11 @@ export default class View {
       document
         .createRange()
         .createContextualFragment(recipeHtml)
-        .querySelectorAll('*')
+        .querySelectorAll("*")
     );
     //get current rendered markup
     const renderedELements = Array.from(
-      this._parentElement.querySelectorAll('*')
+      this._parentElement.querySelectorAll("*")
     );
     //compare the two
     renderedELements.forEach((renderedElement, index) => {
@@ -87,13 +87,13 @@ export default class View {
       //only change nodes where first child is text
       if (
         !renderedElement.isEqualNode(newElements[index]) &&
-        newElements[index].firstChild?.nodeValue.trim() !== ''
+        newElements[index].firstChild?.nodeValue.trim() !== ""
       )
         renderedElement.textContent = newElements[index].textContent;
 
       // Updates changed ATTRIBUES
       if (!renderedElement.isEqualNode(newElements[index]))
-        Array.from(newElements[index].attributes).forEach(attr =>
+        Array.from(newElements[index].attributes).forEach((attr) =>
           renderedElement.setAttribute(attr.name, attr.value)
         );
     });

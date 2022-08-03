@@ -1,20 +1,20 @@
-'use strict';
-import View from './view';
-import icons from 'url:../../img/icons.svg';
+"use strict";
+import View from "./view";
+import icons from "../../img/icons.svg";
 
 class ResultsView extends View {
-  _parentElement = document.querySelector('.results');
+  _parentElement = document.querySelector(".results");
   _data;
   _errorMessage = `¯\\_(ツ)_/ <br>could not find results for that item`;
 
   _generateMarkup() {
     const id = window.location.hash.slice(1);
     return this._data
-      .map(result => {
+      .map((result) => {
         return `
     <li class="preview">
             <a class="preview__link ${
-              result.id === id ? 'preview__link--active' : ' '
+              result.id === id ? "preview__link--active" : " "
             }" href="#${result.id}">
               <figure class="preview__fig">
                 <img src="${result.image_url}" alt="${result.title}" />
@@ -25,7 +25,7 @@ class ResultsView extends View {
 
                 <div class="horizontal-container">
                   <div class="preview__user-generated ${
-                    result.key ? '' : 'hidden'
+                    result.key ? "" : "hidden"
                   }">
                     <svg>
                     <use href="${icons}.svg#icon-user"></use>
@@ -33,7 +33,7 @@ class ResultsView extends View {
                   
                   </div>
                   <div class="preview__user-generated ${
-                    result.key ? '' : 'hidden'
+                    result.key ? "" : "hidden"
                   }">
                     <svg>
                     <use href="${icons}.svg#icon-bookmark-fill"></use>
@@ -45,7 +45,7 @@ class ResultsView extends View {
           </li>
     `;
       })
-      .join('');
+      .join("");
   }
 }
 
