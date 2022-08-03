@@ -56,15 +56,20 @@ export const loadSearchResults = async function (query) {
 export const getResultsOfPage = function (
   page = this.state.search.currentPage
 ) {
-  this.state.search.currentPage = page;
-  const startIndex = (page - 1) * this.state.search.resultsPerPage;
-  const endIndex = page * this.state.search.resultsPerPage;
-  console.log("index", startIndex, endIndex);
-  console.log(
-    "result per page",
-    this.state.search.results.slice(startIndex, endIndex)
-  );
-  return this.state.search.results.slice(startIndex, endIndex);
+  try {
+    this.state.search.currentPage = page;
+    const startIndex = (page - 1) * this.state.search.resultsPerPage;
+    const endIndex = page * this.state.search.resultsPerPage;
+    console.log("index", startIndex, endIndex);
+    console.log(
+      "result per page",
+      this.state.search.results.slice(startIndex, endIndex)
+    );
+    return this.state.search.results.slice(startIndex, endIndex);
+  } catch (error) {
+    console.error(new Error(`getting paginated results faild, ${error}`));
+    throw new Error(`getting paginated results faild, ${error}`);
+  }
 };
 
 export const updateServings = function (changeAmount) {
