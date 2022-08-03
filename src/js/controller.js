@@ -1,12 +1,12 @@
-import * as model from './model.js';
-import recipeView from './views/recipeView.js';
-import searchValue from './views/searchValue.js';
-import resultsView from './views/resultsView.js';
-import { paginationView } from './views/pagenationView.js';
-import { bookmarksView } from './views/bookmarksView.js';
-import uploadRecipeView from './views/uploadRecipeView.js';
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+import * as model from "./model.js";
+import recipeView from "./views/recipeView.js";
+import searchValue from "./views/searchValue.js";
+import resultsView from "./views/resultsView.js";
+import { paginationView } from "./views/pagenationView.js";
+import { bookmarksView } from "./views/bookmarksView.js";
+import uploadRecipeView from "./views/uploadRecipeView.js";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 if (module.hot) {
   module.hot.accept();
@@ -39,10 +39,9 @@ const controlSearchResults = async function () {
     if (!query) return;
     resultsView.renderSpinner();
     await model.loadSearchResults(query);
-    console.log('model.getResultsOfPage()', model.getResultsOfPage());
+    console.log("model.state", model.state);
     resultsView.render(model.getResultsOfPage());
     paginationView.render(model.state.search);
-    console.log('model.state.search', model.state.search);
   } catch (error) {
     console.error(`could not get results. ${error}`);
     resultsView.renderError(error.message);
