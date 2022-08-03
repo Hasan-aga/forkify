@@ -12,6 +12,7 @@
   "author": "hasan",
   "license": "ISC",
   "devDependencies": {
+    "parcel": "^2.7.0",
     "sass": "^1.26.10"
   },
   "dependencies": {
