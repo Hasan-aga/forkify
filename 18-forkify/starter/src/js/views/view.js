@@ -6,6 +6,7 @@ export default class View {
   _data;
 
   renderSpinner() {
+    console.log(icons);
     const htmlMarkup = `
         <div class="spinner">
                 <svg>
