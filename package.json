@@ -11,12 +11,8 @@
   },
   "author": "hasan",
   "license": "ISC",
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.7.0",
-    "parcel": "^2.7.0",
-    "sass": "^1.26.10"
-  },
   "dependencies": {
+    "esbuild": "^0.14.53",
     "fracty": "^1.0.11",
     "img": "^3.0.3"
   }
