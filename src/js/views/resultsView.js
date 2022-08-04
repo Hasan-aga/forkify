@@ -1,6 +1,6 @@
 "use strict";
 import View from "./view";
-import icons from "url:../../img/icons.svg";
+import icons from "../../img/icons.svg";
 
 class ResultsView extends View {
   _parentElement = document.querySelector(".results");
