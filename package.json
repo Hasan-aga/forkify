@@ -1,38 +1,23 @@
 {
   "name": "forkify",
   "version": "1.0.0",
-  "description": "food app",
-  "private": true,
+  "description": "Recipe application",
+  "default": "index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "targets": {
+    "main": false
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve",
-    "build": "NODE_ENV=production webpack ",
-    "build-dev": "webpack",
-    "clean": "rm -rf dist"
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
   },
-  "author": "hasan",
+  "author": "Jonas Schedtmann",
   "license": "ISC",
-  "dependencies": {
-    "fracty": "^1.0.11",
-    "img": "^3.0.3",
-    "node-sass": "^7.0.1",
-    "postcss-preset-env": "^7.7.2"
-  },
   "devDependencies": {
-    "@babel/core": "^7.18.10",
-    "@babel/preset-env": "^7.18.10",
-    "babel-loader": "^8.2.5",
-    "clean-webpack-plugin": "^4.0.0",
-    "css-loader": "^6.7.1",
-    "html-loader": "^4.1.0",
-    "html-webpack-plugin": "^5.5.0",
-    "mini-css-extract-plugin": "^2.6.1",
-    "postcss": "^8.4.14",
-    "postcss-loader": "^7.0.1",
-    "sass": "^1.54.2",
-    "sass-loader": "^13.0.2",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "@parcel/transformer-sass": "^2.2.1",
+    "parcel": "^2.2.1"
+  },
+  "dependencies": {
+    "fracty": "^1.0.9"
   }
 }
