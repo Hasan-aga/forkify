@@ -14,8 +14,12 @@
   "author": "Jonas Schedtmann",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
     "@parcel/transformer-sass": "^2.2.1",
-    "parcel": "^2.2.1"
+    "parcel": "^2.2.1",
+    "postcss": "^8.4.14",
+    "postcss-preset-env": "^7.7.2"
   },
   "dependencies": {
     "fracty": "^1.0.9"
