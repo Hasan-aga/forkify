@@ -69,7 +69,7 @@ module.exports = {
       filename: "main.[contenthash].css",
     }),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: "index.html",
     }),
   ],
 
