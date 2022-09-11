@@ -1,10 +1,13 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = {
   entry: "./src/js/controller.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "main.[contenthash].js",
+    filename: "main[contenthash].js",
     assetModuleFilename: "images/[hash][ext][query]",
+    clean: true,
   },
   module: {
     rules: [
@@ -23,10 +26,24 @@ module.exports = {
       }, //loaders are used in order from right to left},
       {
         test: /\.(png|jpe?g|svg|webp|gif)$/i,
-        type: "asset",
+        type: "asset/resource",
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+          },
+        ],
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "template.html",
+      favicon: "src/img/favicon.png",
+    }),
+  ],
 };
 
 // const path = require("path");
