@@ -1,5 +1,11 @@
+const path = require("path");
 module.exports = {
   entry: "./src/js/controller.js",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "main.[contenthash].js",
+    assetModuleFilename: "images/[hash][ext][query]",
+  },
   module: {
     rules: [
       {
@@ -42,11 +48,11 @@ module.exports = {
 
 //   entry: "./src/js/controller.js",
 
-//   output: {
-//     path: path.resolve(__dirname, "dist"),
-//     filename: "main.[contenthash].js",
-//     assetModuleFilename: "images/[hash][ext][query]",
-//   },
+// output: {
+//   path: path.resolve(__dirname, "dist"),
+//   filename: "main.[contenthash].js",
+//   assetModuleFilename: "images/[hash][ext][query]",
+// },
 
 //   module: {
 //     rules: [
