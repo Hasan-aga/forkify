@@ -28,7 +28,7 @@ export const loadRecipe = async function (id) {
       const data = await ApiTools.getJson(`${API_URL}${id}?key=${API_KEY}`);
       recipe = data.data.recipe;
     }
-    const alreadyBookmarked = this.state.bookmarks.find(
+    const alreadyBookmarked = state.bookmarks.find(
       (bookmark) => bookmark.id === recipe.id
     );
     state.recipe = alreadyBookmarked ? alreadyBookmarked : recipe;
@@ -83,14 +83,14 @@ export const updateServings = function (changeAmount) {
 };
 
 export const switchBookmark = function () {
-  this.state.recipe.bookmark = this.state.recipe.bookmark ? false : true;
-  const indexOfBookmark = this.state.bookmarks.indexOf(this.state.recipe);
-  this.state.recipe.bookmark
-    ? this.state.bookmarks.push(this.state.recipe)
-    : this.state.bookmarks.splice(indexOfBookmark, 1);
+  state.recipe.bookmark = state.recipe.bookmark ? false : true;
+  const indexOfBookmark = state.bookmarks.indexOf(state.recipe);
+  state.recipe.bookmark
+    ? state.bookmarks.push(state.recipe)
+    : state.bookmarks.splice(indexOfBookmark, 1);
   saveBookmarksToLocal();
-  this.state.search.results.forEach((storedRecipe) => {
-    if (storedRecipe.id === this.state.recipe.id)
+  state.search.results.forEach((storedRecipe) => {
+    if (storedRecipe.id === state.recipe.id)
       storedRecipe.bookmark = storedRecipe.bookmark ? false : true;
   });
 };
