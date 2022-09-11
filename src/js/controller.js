@@ -15,7 +15,7 @@ import "../sass/main.scss";
 
 const controlRecipes = async function () {
   try {
-    console.log(recipeView);
+    console.log("recipeView");
     const id = window.location.hash.slice(1);
     if (!id) return;
 
@@ -36,7 +36,7 @@ const controlSearchResults = async function () {
     if (!query) return;
     resultsView.renderSpinner();
     await model.loadSearchResults(query);
-    console.log("model.state", model.state);
+    console.log("model: ", model);
     const paginatedResults = model.getResultsOfPage();
     console.log("paginatedResults", paginatedResults);
     resultsView.render(paginatedResults);
