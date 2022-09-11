@@ -12,7 +12,7 @@ import "../sass/main.scss";
 // https://forkify-api.herokuapp.com/v2
 
 ///////////////////////////////////////
-
+if (process.env.NODE_ENV === "production") console.log = () => null;
 const controlRecipes = async function () {
   try {
     console.log("recipeView");
