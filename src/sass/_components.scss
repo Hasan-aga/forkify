@@ -1,5 +1,5 @@
 %btn {
-  background-image: $gradient;
+  background: $gradient;
   border-radius: 10rem;
   border: none;
   text-transform: uppercase;
@@ -11,6 +11,7 @@
 
   &:hover {
     transform: scale(1.05);
+    background-position: left;
   }
 
   &:focus {
@@ -20,6 +21,11 @@
   & > *:first-child {
     margin-right: 1rem;
   }
+}
+
+.search__btn {
+  @extend %btn;
+  border-radius: 1rem 10rem 10rem 1rem;
 }
 
 .btn {
